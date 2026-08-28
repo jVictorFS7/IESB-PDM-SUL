@@ -1,40 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-import { rotulo_btn_cadastro_meta, rotulo_lista_metas, rotulo_input_meta } from './mensagens';
+import { StyleSheet, View } from "react-native";
+import { useState } from "react";
+import MetasList from "./components/MetasList";
+import MetaInput from "./components/MetaInput";
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
+  const [metas, setMetas] = useState([]);
+
+  function adicionarMetaHandler(inputMeta) {
+    const novaMeta = { id: Math.random().toString(), texto: inputMeta };
+    setMetas([...metas, novaMeta]);
+  }
+
+  function deletarMetaHandler(id) {
+    console.log(id);
+    const novasMetas = metas.filter((meta) => meta.id !== id);
+    setMetas(novasMetas);
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1}}>
-        <View style={{ width: '65%' }}>
-          <TextInput style={styles.inputText} placeholder={rotulo_input_meta} />
-        </View>
-        <View style={{ width: '30%' }}>
-          <Button title={rotulo_btn_cadastro_meta} />
-        </View>
-      </View>
+    
+    <View style={styles.mainContainer}>
+      <MetaInput onAddMeta={adicionarMetaHandler} />
+
       <View style={styles.metaContainer}>
-        <Text>{rotulo_lista_metas}</Text>
+        <MetasList array={metas} onDeleteItem={deletarMetaHandler} />
       </View>
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  mainConteiner: {
+
+  mainContainer: {
     padding: 30,
     flex: 1,
     flexDirection: "column",
   },
+
   inputText: {
     borderColor: "#cccccc",
-    borderWidth: 1
+    borderWidth: 1,
   },
+
   metaContainer: {
-    flex: 1
-  }
+    flex: 15,
+  },
+
+  item: {
+    margin: 8,
+    borderRadius: 5,
+    padding: 10,
+    backgroundColor: "lightblue",
+  },
 });
