@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginLeft: 13,
+    marginLeft: 5,
   },
   label: {
-    padding: 8,
+    padding: 6,
     margin: 4,
     backgroundColor: "#D6D3D1",
     borderRadius: 5,

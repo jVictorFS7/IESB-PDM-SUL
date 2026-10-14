@@ -6,7 +6,7 @@ import {
   Pressable,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 function GerenciarDespesa() {

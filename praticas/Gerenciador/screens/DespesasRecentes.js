@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import DespesaSaida from "../components/despesa/DespesaSaida";
 
 function DespesasRecentes() {
@@ -11,7 +10,7 @@ function DespesasRecentes() {
       return despesa.data >= seteDiasAtras && despesa.data <= hoje;
     });
   }
-  const DUMMY_DESPESAS = [
+  const DESPESAS_RECENTES = [
     {
       id: "1",
       descricao: "Conta de luz",
@@ -19,21 +18,34 @@ function DespesasRecentes() {
       data: new Date(2026, 9, 10),
       categoria: "Contas",
     },
+    {
+      id: "2",
+      descricao: "Restaurante",
+      valor: 300.00,
+      data: new Date(2026, 9, 10),
+      categoria: "Alimentação",
+    },
+    {
+      id: "3",
+      descricao: "Uber",
+      valor: 25.00,
+      data: new Date(2026, 9, 10),
+      categoria: "Transporte",
+    },
+    {
+      id: "4",
+      descricao: "Praia",
+      valor: 100.00,
+      data: new Date(2026, 9, 10),
+      categoria: "Lazer",
+    }
   ];
   return (
     <DespesaSaida
-      despesas={filtrarUltimos7Dias(DUMMY_DESPESAS)}
+      despesas={filtrarUltimos7Dias(DESPESAS_RECENTES)}
       periodo={"Últimos 7 dias"}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default DespesasRecentes;

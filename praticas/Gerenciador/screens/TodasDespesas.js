@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
 import DespesaSaida from "../components/despesa/DespesaSaida";
 
 function TodasDespesas() {
-  const DUMMY_DESPESAS = [
+  const SIMULA_DESPESAS = [
     {
       id: "1",
       descricao: "Conta de luz",
@@ -18,15 +17,7 @@ function TodasDespesas() {
       categoria: "Contas",
     },
   ];
-  return <DespesaSaida despesas={DUMMY_DESPESAS} periodo={"Total"} />;
+  return <DespesaSaida despesas={SIMULA_DESPESAS} periodo={"Total"} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default TodasDespesas;
